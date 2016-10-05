@@ -8,10 +8,10 @@ var request = require('request');
  
  //Twitter Keys
 var client = new Twitter({
-  consumer_key: 'keys.twitterKeys.consumer_key',
-  consumer_secret: 'keys.twitterKeys.consumer_secret',
-  access_token_key: 'keys.twitterKeys.access_token_key',
-  access_token_secret: 'keys.twitterKeys.access_token_key'
+  consumer_key: twitterKeys.consumer_key,
+  consumer_secret: twitterKeys.consumer_secret,
+  access_token_key: twitterKeys.access_token_key,
+  access_token_secret: twitterKeys.access_token_secret,
 });
  
  //Twitter Request
@@ -19,12 +19,11 @@ var params = {
 	screen_name: 'pixeltastic',
 	count: 20,
 	exclude_replies: true,
-	contributor_details: true
+	contributor_details: false
 };
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
   if (!error) {
     console.log(tweets);
-    console.log(response);
   }
 });
 
@@ -35,7 +34,7 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 //         return;
 //     }
  
-//     // Do something with 'data' 
+//     console.log(JSON.stringify(data, null, 2));
 // });
 
 // //Request request
